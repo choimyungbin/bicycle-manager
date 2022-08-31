@@ -4,15 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <Button
+        android:stateListAnimator="@null"
+        android:id="@+id/button_scan"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_button_back_skyblue"
+        android:text="@string/button_scan"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/searchInput"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/shape_input_background"
+        android:drawableStart="@drawable/search_smaller"
+        android:drawablePadding="8dp"
+        android:hint="바코드 번호를 입력하세요"
+        android:inputType="number"
+        android:paddingStart="15dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_scan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
