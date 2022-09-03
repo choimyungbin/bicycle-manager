@@ -5,21 +5,29 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Adapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnScan: Button
     lateinit var searchInput: EditText
 //    lateinit var string: String
     var activityMainBinding: ActivityMainBinding? = null
+    val itemList = arrayListOf<ListViewItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding!!.root)
+
+        val Adapter = ListViewAdapter(this, itemList)
+        mainListView.adapter = Adapter
+        itemList.add(ListViewItem(1,101,101,123456, true))
 
         btnScan = activityMainBinding!!.buttonScan
         btnScan.setOnClickListener {
