@@ -43,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button_scan" />
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,6 +56,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchInput">
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:iconifiedByDefault="false"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mainRecyclerview"
             android:layout_width="match_parent"
