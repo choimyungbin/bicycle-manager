@@ -1,6 +1,6 @@
 package aca.appdong.bicycle_manager
 
-class ListViewItem(
+class UserItem(
     val number: Int,
     val block: Int,
     val unit: Int,
