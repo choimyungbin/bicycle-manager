@@ -19,44 +19,17 @@ class RecyclerViewAdapter(var userItem: ArrayList<UserItem>, private val context
     var itemFilter = ItemFilter()
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-        //        val itemNumber = view.findViewById<TextView>(R.id.tv_number)
-//        val itemBlock = view.findViewById<TextView>(R.id.tv_block)
-//        val itemUnit = view.findViewById<TextView>(R.id.tv_unit)
-//        val itemBarcode = view.findViewById<TextView>(R.id.tv_barcode)
-//        val itemReside = view.findViewById<TextView>(R.id.tv_reside)
-//        fun bind(item: UserItem) {
-//            itemNumber.text = item.number.toString()
-//            itemBlock.text = item.block.toString()
-//            itemUnit.text = item.unit.toString()
-//            itemBarcode.text = item.barcode.toString()
-//            itemReside.text = item.reside.toString()
-//        }
         lateinit var tv_number: TextView
         lateinit var tv_block: TextView
         lateinit var tv_unit: TextView
         lateinit var tv_barcode: TextView
         lateinit var tv_reside: TextView
-
         init {
             tv_number = itemView.findViewById(R.id.tv_number)
             tv_block = itemView.findViewById(R.id.tv_block)
             tv_unit = itemView.findViewById(R.id.tv_unit)
             tv_barcode = itemView.findViewById(R.id.tv_barcode)
             tv_reside = itemView.findViewById(R.id.tv_reside)
-
-//            itemView.setOnClickListener {
-//                AlertDialog.Builder(context).apply {
-//                    var position = adapterPosition
-//                    var user = filteredUserItem[position]
-//                    setTitle(user.number)
-//                    setMessage(user.phoneNumber)
-//                    setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-//                        Toast.makeText(context, "OK Button Click", Toast.LENGTH_SHORT).show()
-//                    })
-//                    show()
-//                }
-//            }
         }
     }
 
@@ -86,14 +59,12 @@ class RecyclerViewAdapter(var userItem: ArrayList<UserItem>, private val context
                 results.count = userItem.size
 
                 return results
-                //공백제외 2글자 이인 경우 -> 이름으로만 검색
-            } else {
+            } else {//바코드값 입력시
                 for (useritem in userItem) {
                     if (useritem.barcode.toString().contains(filterString)) {
                         filteredList.add(useritem)
                     }
                 }
-                //그 외의 경우(공백제외 2글자 초과) -> 이름/전화번호로 검색
             }
             results.values = filteredList
             results.count = filteredList.size

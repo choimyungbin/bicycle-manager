@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnScan: Button
+    lateinit var btnReset: Button
     lateinit var searchInput: EditText
     lateinit var userItem: ArrayList<UserItem>
     lateinit var recyclerViewAdapter: RecyclerViewAdapter
@@ -35,8 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         userItem = tempUserItem()
         setAdapter()
-        //userItem.(UserItem(1,101,101,123456, true))
-        //더미
+
         btnScan = activityMainBinding!!.buttonScan
         btnScan.setOnClickListener {
             val integrator = IntentIntegrator(this)
@@ -45,6 +46,11 @@ class MainActivity : AppCompatActivity() {
             integrator.setBeepEnabled(true)
             integrator.setOrientationLocked(false)
             integrator.initiateScan()   //스캔
+        }
+        btnReset = activityMainBinding!!.buttonReset
+        btnReset.setOnClickListener {
+            search_view.setQuery("", false)// 문구 초기화
+            search_view.clearFocus() // 포커스 초기화
         }
     }
 
@@ -75,20 +81,11 @@ class MainActivity : AppCompatActivity() {
         tempUserItem.add(UserItem(3,301,103,242424,true))
         tempUserItem.add(UserItem(4,401,104,353535,true))
         tempUserItem.add(UserItem(5,501,105,767676,true))
+
+
         return tempUserItem
+        //더미 데이터
     }
-//    private fun initRecycler() {
-//        recyclerViewAdapter = RecyclerViewAdapter(this)
-//        mainRecyclerview.adapter = recyclerViewAdapter
-//
-//        datas.apply {
-//            add(UserItem(1,101,101,123456, true))
-//
-//            recyclerViewAdapter.datas = datas
-//            recyclerViewAdapter.notifyDataSetChanged()
-//        }
-//
-//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
 
@@ -109,5 +106,4 @@ class MainActivity : AppCompatActivity() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
-
 }
