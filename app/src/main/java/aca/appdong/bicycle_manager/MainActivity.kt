@@ -10,10 +10,12 @@ import android.util.Log
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item.*
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnScan: Button
@@ -90,7 +92,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
 
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        searchInput = activityMainBinding!!.searchInput
+        //search_view = activityMainBinding!!.search_view
         Log.d("bar","바코드 확인끝")
 
         if (result != null){
@@ -99,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             }
             else{
                 Toast.makeText(this, "스캔완료: "+result.contents, Toast.LENGTH_SHORT).show()
-                searchInput.setText(result.contents)
+                search_view.setQuery(result.contents, true)
                 Log.d("bar", "바코드:${result.contents}")
             }
         }else{
